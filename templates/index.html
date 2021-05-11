@@ -15,6 +15,7 @@
       <h1>Mission to Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape new data!</a></p>
     </div>
+
     <div class="row" id="mars_news">
         <div class="col-md-12">
             <h2>Latest Mars News</h2>
@@ -23,13 +24,37 @@
         </div>
     </div>
 
-    <div class="row" id="mars_featured_image">
-        <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-8" id="mars_featured_image">
             <h2>Featured Mars Image</h2>
             <img src="{{ mars_data.featured_image }}">
         </div>
-    </div>
+    
  
+        <div class="col-md-4" id="mars_data_table">
+            <h2>Mars Facts</h2>
+            <table>{{ mars_data.Mars_facts_table|safe }}</table>
+        </div>
+    </div>
+
+    <div class="row" id="mars_hemispheres">
+        <h2 style= "text-align: center;">Mars Hemispheres</h2>
+            <div class="col-md-12">
+                <div class="row"></div>
+                    {% for item in mars_data.hemispheres %}
+                    <div class="col-md-3">
+                        <div class="card text-white bg-black">
+                            <img class="card-img-top" src="{{item.img_url}}" />
+                            <div class="card-body">
+                                <p class="card-text">{{ item.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div> 
+            </div>    
+  </div>
+
 
   </div>
   </div>
